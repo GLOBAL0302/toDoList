@@ -1,6 +1,6 @@
 import './App.css';
 import AddTaskForm from './components/AddTaskForm';
-import {useState} from "react";
+import React, {useState} from "react";
 import Task from "./components/Task";
 
 
@@ -62,14 +62,18 @@ function App() {
 
   return (
     <>
-      <AddTaskForm
-          readTask = {(e)=>readTask(e)}
-          addTask = {()=>addTask()}
-      />
+        <div className="notes">
+            <h1 className="appHeader">My Tasks</h1>
+            <AddTaskForm
+                readTask = {(e)=>readTask(e)}
+                addTask = {()=>addTask()}
+            />
 
-      <div className="all_tasks">
-          {showTasks}
-      </div>
+            <div className="all_tasks">
+                {showTasks}
+            </div>
+        </div>
+
     </>
   );
 }

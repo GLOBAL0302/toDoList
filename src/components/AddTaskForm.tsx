@@ -8,7 +8,7 @@ interface Props{
 const AddTaskForm: React.FC<Props> = ({readTask,addTask}) => {
   return(
       <div className="taskForm">
-          <input type="text" onChange={readTask}/>
+          <input type="text" onChange={readTask} placeholder="Please input text"/>
           <button type="submit" onClick={addTask}>Add Task</button>
       </div>
   );
