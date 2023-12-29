@@ -4,3 +4,23 @@
   padding: 2rem;
   text-align: center;
 }
+
+.taskForm{
+  margin-bottom: 20px;
+}
+
+.all_tasks{
+  width: 500px;
+}
+
+.taskForm, .task_element{
+ display: flex;
+  justify-content: space-between;
+  border:5px solid white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.task_element{
+  margin-bottom: 10px;
+}

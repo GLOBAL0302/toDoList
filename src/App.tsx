@@ -3,6 +3,7 @@ import AddTaskForm from './components/AddTaskForm';
 import {useState} from "react";
 import Task from "./components/Task";
 
+
 interface Tasker{
   task: string;
   key: string;
@@ -15,15 +16,29 @@ function App() {
       {task:"Prepare for big adventure", key: "2023-12-29T08:53:16.046Z'"}]
   );
 
-  let inputValue = "someText";
+  let inputValue = "";
   const readTask = (e:React.ChangeEvent<HTMLInputElement>)=>{
     inputValue = e.target.value;
   };
   const addTask = ()=>{
-    const now:Date  = new Date();
-    const newTask:Tasker = {task: inputValue, key: now.toJSON()};
-    myTask.push(newTask);
-    //Here need to add func  which will refresh the list
+    if(inputValue){
+        const now:Date  = new Date();
+        const newTask:Tasker = {task: inputValue, key: now.toJSON()};
+        const myTaskCopy:Tasker[] = [...myTask];
+        myTaskCopy.push(newTask);
+        setmyTask(myTaskCopy);
+    }
+  };
+
+  const removeTask = (id:string)=>{
+      const myTaskCopy:Tasker[] = [...myTask];
+      myTaskCopy.forEach((value, index) => {
+          if(value.key == id){
+              myTaskCopy.splice(index, 1);
+              setmyTask(myTaskCopy);
+          }
+      }
+      );
   };
 
   let showTasks:React.ReactNode = null;
@@ -34,7 +49,11 @@ function App() {
             return(
               <Task
                   task={oneTask.task}
-                  key={oneTask.key}/>
+                  key={oneTask.key}
+                  removeTask={()=>{
+                      removeTask(oneTask.key);
+                  }
+              }/>
             );
           })}
       </div>

@@ -7,11 +7,11 @@ interface Props{
 
 const AddTaskForm: React.FC<Props> = ({readTask,addTask}) => {
   return(
-      <div>
+      <div className="taskForm">
           <input type="text" onChange={readTask}/>
           <button type="submit" onClick={addTask}>Add Task</button>
       </div>
-  )
+  );
 }
 
 export default AddTaskForm;
